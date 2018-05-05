@@ -83,7 +83,7 @@ class SiderDemo extends React.Component<RouteComponentProps<any>, any> {
 					</Content>
 
 					<Footer style={{ textAlign: 'center' }}>
-						Ant Design ©2016 Created by Ant UED
+						Ant Design ©2018 Created by Fongwell
           </Footer>
 
 				</Layout>

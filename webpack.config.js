@@ -31,7 +31,7 @@ const webpackConfig = {
 		extensions: ['.json', '.jsx', '.js', '.ts', '.tsx'],
 		alias: {
 			assets: path.resolve(__dirname, 'assets'),
-			'@components': path.resolve(__dirname, 'src/components'),
+			'@': path.resolve(__dirname, 'src'),
 		},
 	},
 
