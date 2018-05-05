@@ -1,0 +1,26 @@
+{
+	"compilerOptions": {
+		"strictNullChecks": true,
+		"moduleResolution": "node",
+		"module": "esnext",
+		"allowSyntheticDefaultImports": true,
+		"experimentalDecorators": true,
+		"noUnusedParameters": true,
+		"noUnusedLocals": true,
+		"noEmitOnError": false,
+		"noImplicitAny": false,
+		"target": "es2017",
+		"removeComments": true,
+		"jsx": "react",
+		// "jsx": "preserve",
+		"sourceMap": true,
+		"baseUrl": "src",
+		"paths": {
+			"@components/*": ["./components/*"],
+    }
+
+	},
+	"exclude": [
+		"node_modules",
+	]
+}
