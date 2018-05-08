@@ -11,7 +11,7 @@ export function getAssetParams(values) {
 	}
 
 	Object.keys(query).forEach((key) => {
-		// 处理moment对象 ==>	dateValoe
+		// 处理moment对象 ==>	dateValue
 		if (moment.isMoment(query[key])) query[key] = moment(query[key]).startOf('day').valueOf()
 
 		// 数组逗号隔开

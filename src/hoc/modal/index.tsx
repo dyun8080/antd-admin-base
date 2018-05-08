@@ -1,4 +1,5 @@
 import React from 'react'
+import { message } from 'antd'
 
 interface Props {
 	children: React.ReactElement<any>
@@ -13,6 +14,7 @@ interface State {
 export interface WrappedComponentImplements {
 	onConfirmLoading: any
 	handleCancel: any
+
 	/** 函数返回promise的resolve时候，取消按钮旋转 */
 	asyncConfirm: (asyncCb?: () => Promise<any>) => void
 }
@@ -46,9 +48,17 @@ export default (WrappedComponent: React.ComponentType<WrappedComponentProps>): R
 				this.handleCancel()
 				return
 			}
-			this.setState({ confirmLoading: true }, async () => {
-				await asyncCb()
-				this.handleCancel()
+			this.setState({
+				confirmLoading: true,
+			}, async () => {
+				try {
+					await asyncCb()
+					this.handleCancel()
+				} catch (error) {
+					this.handleCancel()
+					message.error(`This is a message of error：${error}`)
+				}
+
 			})
 		}
 

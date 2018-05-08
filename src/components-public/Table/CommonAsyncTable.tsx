@@ -74,10 +74,10 @@ export default class CommonAsyncTable extends Component<Props, State> {
 			...this.query,
 		}
 
-		const query = getAssetParams(querySource)
+		const params = getAssetParams(querySource)
 
 		this.setState({ loading: true })
-		const [dataResponse, countResponse] = await Promise.all([get(apiString, query), get(`${apiString}/count`, query)]) as any
+		const [dataResponse, countResponse] = await Promise.all([get(apiString, params), get(`${apiString}/count`, params)]) as any
 
 		this.setState({
 			loading: false,
