@@ -1,5 +1,14 @@
 declare module '*.less' {
-	const content: {[className: string]: string};
+	const content: { [className: string]: string };
+	export = content;
+}
+
+declare module '*.json' {
+	const content: {
+		code: number,
+		data: any,
+	}
+
 	export = content;
 }
 

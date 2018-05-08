@@ -1,32 +1,25 @@
 import React, { Component } from 'react'
-
 import { AsyncViewProps } from '@/stores/RouterStore'
-import BaseTable from '@/components-public/Table/BaseTable'
+import CommonAsyncTable from '@/components-public/Table/CommonAsyncTable'
 
 export default class AsyncView1 extends Component<AsyncViewProps, any> {
 	render() {
 		const columns = [
-			{
-				title: '姓名', key: 'name', filters: [
-					{ text: 'Joe', value: 'Joe' },
-					{ text: 'Jim', value: 'Jim' },
-				],
-			},
-			{ title: '年级', key: 'age' },
-			{ title: '班级', key: 'cls' },
-			{ title: '性别', key: 'sex' },
+			{ title: '货品名称', key: 'name' },
+			{ title: '货品编号', key: 'number' },
+			{ title: '大类', key: 'bigStyle' },
+			{ title: '小类', key: 'smallStyle' },
+			{ title: '采购价', key: 'costPrice' },
+			{ title: '零售价', key: 'price' },
+			{ title: '日期', key: 'createdDate' },
 		]
 
 		return (
-			<div style={{ height: 2000 }}>
-				<BaseTable
+			<div style={{ backgroundColor: '#fff' }}>
+				<CommonAsyncTable
 					columns={columns}
-					dataSource={[
-						{ name: 'damao', id: 1, age: 25, cls: '奥术大师多撒', sex: '男' },
-						{ name: 'damao', id: 2, age: 25, cls: '奥术大师多', sex: '男' },
-						{ name: 'damao', id: 3, age: 25, cls: '奥术大师多', sex: '男' },
-						{ name: 'damao', id: 4, age: 25, cls: '奥术大师多', sex: '男' },
-					]} />
+					apiString="https://sscsapi.fongwell.com/api/skus"
+				/>
 			</div>
 		)
 	}

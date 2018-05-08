@@ -126,7 +126,7 @@ if (NODE_ENV !== 'production') {
 	webpackConfig.devtool = 'cheap-module-eval-source-map'
 	webpackConfig.entry.index = [
 		'webpack/hot/dev-server',
-		'webpack-dev-server/client?http://0.0.0.0:8080/',
+		'webpack-dev-server/client?http://0.0.0.0:7777/',
 		...webpackConfig.entry.index
 	]
 	webpackConfig.plugins.push(new webpack.HotModuleReplacementPlugin())
@@ -160,7 +160,7 @@ else {
 					filename: '[name].[chunkhash:8].js',
 					chunks: 'all',
 					// test: /react|react-dom|moment/,
-					test: /react|react-dom/,
+					test: /react-dom|axios/,
 					minChunks: 1,
 					enforce: true
 				},

@@ -5,23 +5,26 @@ import { RouteComponentProps } from 'react-router-dom'
 
 import asyncComponent from '../hoc/asyncComponent'
 
-const AsyncView1 = asyncComponent(() => import('../views/AsyncView1'))
-const AsyncView2 = asyncComponent(() => import('../views/AsyncView2'))
-
 export interface AsyncViewProps extends RouteComponentProps<any>, RouteItemValues { }
 
 export interface RouteItemValues {
+	/** 是否在侧边栏显示 */
 	hide?: boolean
+	/** 用于侧边栏和面包屑导航 */
 	title: string
 	url: string
 	Component: React.ComponentType<AsyncViewProps>
 }
 
+const AsyncView1 = asyncComponent(() => import('../views/AsyncView1'))
+const AsyncView2 = asyncComponent(() => import('../views/AsyncView2'))
+
+
 export class RouterStore extends BaseRouterStore {
 	static RouteList: Array<RouteItemValues> = [
-		{ title: '货品管理', url: '/production', Component: AsyncView1 },
-		{ title: '店铺管理', url: '/store', Component: AsyncView2 },
-		{ hide: true, title: '货品详情', url: '/production/:id', Component: AsyncView2 },
+		{ title: '商品列表', url: '/AsyncView1', Component: AsyncView1 },
+		{ title: 'AsyncView2', url: '/AsyncView2', Component: AsyncView2 },
+		{ hide: true, title: '商品详情', url: '/AsyncView1/:id', Component: AsyncView1 },
 
 	]
 
@@ -35,8 +38,6 @@ export class RouterStore extends BaseRouterStore {
 	@computed get menuList() {
 		return this.location && this.location.pathname
 	}
-
-
 }
 
 export default RouterStore

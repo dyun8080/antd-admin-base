@@ -1,6 +1,9 @@
-export function getAssetParams(values) {
+import moment from 'moment'
+export { get, post } from './request'
+import cloneDeep from 'lodash/clonedeep'
 
-	const query = JSON.parse(JSON.stringify(values))
+export function getAssetParams(values) {
+	const query = cloneDeep(values)
 
 	if ('size' in query && 'current' in query) {
 		query.from = (query.current - 1) * query.size
@@ -9,7 +12,7 @@ export function getAssetParams(values) {
 
 	Object.keys(query).forEach((key) => {
 		// 处理moment对象 ==>	dateValoe
-		// if (moment.isMoment(values[key])) values[key] = moment(values[key]).startOf('day').valueOf()
+		if (moment.isMoment(query[key])) query[key] = moment(query[key]).startOf('day').valueOf()
 
 		// 数组逗号隔开
 		if (Array.isArray(query[key]) && query[key].length == 0) {

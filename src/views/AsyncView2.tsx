@@ -6,7 +6,7 @@ export default class AsyncView2 extends Component<AsyncViewProps, any> {
 		process
 		return (
 			<div>
-				AsyncView2
+				AsyncView22
 			</div>
 		)
 	}

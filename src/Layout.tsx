@@ -1,9 +1,10 @@
 import React from 'react'
-import { Layout, Menu, Breadcrumb, Icon } from 'antd'
+import { Layout, Menu, Icon } from 'antd'
 import { Route, Switch, Link, RouteComponentProps } from 'react-router-dom'
 import { observer, inject } from 'mobx-react'
 import { STORE_ROUTER } from './constants/stores'
 import { RouterStore } from './stores'
+import BreadcrumbNavs from './components/BreadcrumbNavs'
 
 const { Header, Content, Footer, Sider } = Layout
 // const SubMenu = Menu.SubMenu
@@ -33,7 +34,6 @@ class SiderDemo extends React.Component<RouteComponentProps<any>, any> {
 
 	render() {
 		const { pathname } = this.props.location
-
 		return (
 			<Layout style={{ minHeight: '100vh' }}>
 				<Sider
@@ -66,17 +66,21 @@ class SiderDemo extends React.Component<RouteComponentProps<any>, any> {
 				</Sider>
 
 				<Layout>
-					<Header style={{ background: '#fff', padding: 0 }} />
+					{/* <Header style={{ background: '#fff', padding: 0 }}> */}
+					<Header style={{ backgroundColor: '#fff' }} >
+						ant-design-admin
+					</Header>
 					<Content style={{ margin: '0 16px' }}>
-						<Breadcrumb style={{ margin: '16px 0' }}>
-							<Breadcrumb.Item>User</Breadcrumb.Item>
-							<Breadcrumb.Item>Bill</Breadcrumb.Item>
-						</Breadcrumb>
 						<Switch>
 							{RouterStore.RouteList.map(item => {
 								return <Route exact path={item.url} key={item.title} render={props => {
 									const { Component } = item
-									return <Component {...item} {...props} />
+									return (
+										<React.Fragment>
+											<BreadcrumbNavs {...props} />
+											<Component {...item} {...props} />
+										</React.Fragment>
+									)
 								}} />
 							})}
 						</Switch>
