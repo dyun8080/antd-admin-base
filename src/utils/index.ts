@@ -1,6 +1,7 @@
 import moment from 'moment'
-export { get, post } from './request'
 import cloneDeep from 'lodash/clonedeep'
+
+export { get, post } from './request'
 
 export function getAssetParams(values) {
 	const query = cloneDeep(values)
