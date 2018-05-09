@@ -15,8 +15,8 @@ export interface WrappedComponentImplements {
 	onConfirmLoading: any
 	handleCancel: any
 
-	/** 函数返回promise的resolve时候，取消按钮旋转 */
-	asyncConfirm: (asyncCb?: () => Promise<any>) => void
+	/** 函数返回promise的resolve时候，取消按钮旋转, 第二个参数为成功后的回调 */
+	asyncConfirm: (asyncCb?: () => Promise<any>, successCb?: () => void) => void
 }
 
 export interface WrappedComponentProps extends Props, State, WrappedComponentImplements { }
@@ -24,6 +24,8 @@ export interface WrappedComponentProps extends Props, State, WrappedComponentImp
 export default (WrappedComponent: React.ComponentType<WrappedComponentProps>): React.ComponentType<Props> => {
 
 	return class extends React.Component<Props, State> implements WrappedComponentImplements {
+		wrappedReactInstance: any
+
 		state = {
 			visible: false,
 			confirmLoading: false,
@@ -43,7 +45,7 @@ export default (WrappedComponent: React.ComponentType<WrappedComponentProps>): R
 			}, cb && cb())
 		}
 
-		asyncConfirm = async (asyncCb?: () => Promise<any>) => {
+		asyncConfirm = async (asyncCb?: () => Promise<any>, successCb?: () => void) => {
 			if (!asyncCb) {
 				this.handleCancel()
 				return
@@ -53,9 +55,10 @@ export default (WrappedComponent: React.ComponentType<WrappedComponentProps>): R
 			}, async () => {
 				try {
 					await asyncCb()
-					this.handleCancel()
+					this.handleCancel(successCb)
 				} catch (error) {
-					this.handleCancel()
+					// this.handleCancel()
+					this.onConfirmLoading(false)
 					message.error(`This is a message of error：${error}`)
 				}
 
@@ -68,7 +71,7 @@ export default (WrappedComponent: React.ComponentType<WrappedComponentProps>): R
 				[
 					React.cloneElement(this.props.children, { onClick: this.showModal, key: 'outer' }),
 					<WrappedComponent
-						ref="WrappedComponent"
+						ref={(ele: any) => this.wrappedReactInstance = ele}
 						key="WrappedComponent"
 						onConfirmLoading={this.onConfirmLoading}
 						handleCancel={this.handleCancel}

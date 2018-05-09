@@ -103,7 +103,7 @@ const webpackConfig = {
 						loader: 'css-loader',
 						options: { minimize: !(NODE_ENV !== 'production') }
 					},
-					'postcss-loader',
+					// 'postcss-loader',
 					{
 						loader: 'less-loader',
 						options: {
@@ -112,6 +112,7 @@ const webpackConfig = {
 					}
 				]
 			},
+
 		]
 	},
 }

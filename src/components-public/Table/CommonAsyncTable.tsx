@@ -16,11 +16,16 @@ interface Props extends TableProps<any> {
 }
 
 interface State {
+	/** 当前页数 */
 	current: number
+	/** 列表总数 */
 	count: number
+	/** 加载动画 */
 	loading: boolean
+	/** 列表总数 */
 	data: Array<any>
-	selectedRowKeys: Array<any>
+	/** 开启筛选时选中的ID数组 */
+	selectedRowKeys: Array<number>
 }
 
 export default class CommonAsyncTable extends Component<Props, State> {
@@ -64,7 +69,7 @@ export default class CommonAsyncTable extends Component<Props, State> {
 	}
 
 
-	getData = async () => {
+	getData = async (): Promise<any> => {
 		const { apiString, pageSize } = this.props
 		const { current } = this.state
 
@@ -86,7 +91,7 @@ export default class CommonAsyncTable extends Component<Props, State> {
 		})
 	}
 
-	onSelectChange = (selectedRowKeys) => {
+	onSelectChange = (selectedRowKeys: Array<number>) => {
 		this.setState({ selectedRowKeys })
 	}
 

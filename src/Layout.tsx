@@ -7,7 +7,7 @@ import { RouterStore } from './stores'
 import BreadcrumbNavs from './components/BreadcrumbNavs'
 
 const { Header, Content, Footer, Sider } = Layout
-// const SubMenu = Menu.SubMenu
+const SubMenu = Menu.SubMenu
 
 @inject(STORE_ROUTER)
 @observer
@@ -34,6 +34,7 @@ class SiderDemo extends React.Component<RouteComponentProps<any>, any> {
 
 	render() {
 		const { pathname } = this.props.location
+
 		return (
 			<Layout style={{ minHeight: '100vh' }}>
 				<Sider
@@ -47,32 +48,42 @@ class SiderDemo extends React.Component<RouteComponentProps<any>, any> {
 						theme="dark"
 						selectedKeys={[pathname]}
 						mode="inline">
-						{RouterStore.RouteList.filter(i => !i.hide).map(item => (
-							<Menu.Item key={item.url}>
-								<Link to={item.url}>
-									<Icon type="pie-chart" /><span>{item.title}</span>
-								</Link>
-							</Menu.Item>
-						))}
-						{/* <SubMenu
-							key="sub1"
-							title={<span><Icon type="user" /><span>User</span></span>}
-						>
-							<Menu.Item key="3">Tom</Menu.Item>
-							<Menu.Item key="4">Bill</Menu.Item>
-							<Menu.Item key="5">Alex</Menu.Item>
-						</SubMenu> */}
+						{RouterStore.RouteList.filter(i => !i.hide).map(item => {
+							if (item.children) {
+								return (
+									<SubMenu
+										key={item.title}
+										title={<span><Icon type={item.iconType || 'pie-chart'} /><span>{item.title}</span></span>}
+									>
+										{item.children.map(i => (
+											<Menu.Item key={i.url}>
+												<Link to={i.url}>
+													<span>{i.title}</span>
+												</Link>
+											</Menu.Item>
+										))}
+									</SubMenu>
+								)
+							}
+
+							return (
+								<Menu.Item key={item.url}>
+									<Link to={item.url}>
+										<Icon type={item.iconType || 'pie-chart'} /><span>{item.title}</span>
+									</Link>
+								</Menu.Item>
+							)
+						})}
 					</Menu>
 				</Sider>
 
 				<Layout>
-					{/* <Header style={{ background: '#fff', padding: 0 }}> */}
 					<Header style={{ backgroundColor: '#fff' }} >
 						ant-design-admin
 					</Header>
 					<Content style={{ margin: '0 16px' }}>
 						<Switch>
-							{RouterStore.RouteList.map(item => {
+							{RouterStore.assetRoutelist.map(item => {
 								return <Route exact path={item.url} key={item.title} render={props => {
 									const { Component } = item
 									return (

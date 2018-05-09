@@ -7,7 +7,7 @@ export default (props: RouteComponentProps<any>) => {
 	const { path } = props.match
 	const breadcrumbNameMap = {} as any
 
-	RouterStore.RouteList.forEach(item => {
+	RouterStore.assetRoutelist.forEach(item => {
 		breadcrumbNameMap[item.url] = item.title
 	})
 
