@@ -47,7 +47,11 @@ class FormWrap extends Component<Props, any> {
 				: React.cloneElement(<Input />, { placeholder, style: { width: '100%' } })
 
 			return (
-				<FormItem key={key} label={label} {...formItemLayout}>
+				<FormItem
+					key={key}
+					label={label}
+					{...formItemLayout}
+				>
 					{getFieldDecorator(key, {
 						rules: rules ? [{ message: `请输入${label}!`, ...rules }] : [],
 						...rest,

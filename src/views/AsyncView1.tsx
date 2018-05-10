@@ -69,7 +69,6 @@ export default class AsyncView1 extends Component<AsyncViewProps, any> {
 				<HOCAddModal>
 					<Button icon="plus" type="primary">新建商品</Button>
 				</HOCAddModal>
-
 				<CommonAsyncTable
 					columns={columns}
 					pageSize={10}

@@ -18,3 +18,11 @@ import cloneDeep from 'lodash/clonedeep'
 
 - Table
 	-- CommonAsyncTable
+
+Show chunks:
+All (302.82 KB)
+core/index.eb26e719.js (131.29 KB)
+core/2.82764f4a.js (69.43 KB)
+core/1.ad82a15e.js (56.37 KB)
+vendor.c5711c57.js (34.44 KB)
+core/0.ccb08777.js (11.28 KB)
