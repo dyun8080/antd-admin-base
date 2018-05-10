@@ -1,28 +1,24 @@
 import React, { Component } from 'react'
 import { AsyncViewProps } from '@/stores/RouterStore'
-import { Button, Modal, Card } from 'antd'
+import { Button, Card, Tag, Modal } from 'antd'
 import modal, { WrappedComponentProps } from '@/hoc/modal'
+
 import CommonAsyncTable from '@/components-public/Table/CommonAsyncTable'
 
-class AddModal extends Component<WrappedComponentProps, any> {
+class Modal1 extends Component<WrappedComponentProps, any> {
 	render() {
 		return (
 			<Modal
 				visible={this.props.visible}
-				onCancel={() => this.props.handleCancel()}
-				onOk={() => this.props.asyncConfirm()}
-				confirmLoading={this.props.confirmLoading}
-				title="Modal"
+				onCancel={() => { this.props.handleCancel() }}
 			>
-				<p>
-					HOCAddModal
-				</p>
+				<p>asdas</p>
 			</Modal>
 		)
 	}
 }
 
-const HOCAddModal = modal(AddModal)
+const HOCAddModal = modal(Modal1)
 
 export default class AsyncView2 extends Component<AsyncViewProps, any> {
 	render() {
@@ -37,8 +33,9 @@ export default class AsyncView2 extends Component<AsyncViewProps, any> {
 		return (
 			<Card bodyStyle={{ padding: 10 }} bordered={false}>
 				<HOCAddModal>
-					<Button>HOCAddModal11</Button>
+					<Button>HOCAddModal</Button>
 				</HOCAddModal>
+				<Tag>时间</Tag>
 				<CommonAsyncTable
 					columns={columns}
 					pageSize={10}

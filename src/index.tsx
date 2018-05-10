@@ -8,8 +8,8 @@ import { LocaleProvider } from 'antd'
 import zhCN from 'antd/lib/locale-provider/zh_CN'
 import { createHashHistory } from 'history'
 
-import { createStores } from './stores'
 import Layout from './Layout'
+import { createStores } from './stores'
 
 import '../assets/styles/layout.less'
 import '../assets/styles/flex.less'

@@ -10,6 +10,7 @@
     "nodemon": "./node_modules/.bin/nodemon --exec babel-node",
     "babel-node": "./node_modules/.bin/babel-node",
     "es-checker": "./node_modules/.bin/es-checker",
+    "dll": "npm run clean && node -r babel-register ./node_modules/webpack/bin/webpack --progress --profile --colors --config webpack.dll.js",
     "start": "cross-env NODE_ENV=development node -r babel-register server/server.dev.js",
     "build-main": "cross-env NODE_ENV=production node -r babel-register ./node_modules/webpack/bin/webpack --progress --profile --colors",
     "build": "npm run clean && npm run build-main"

@@ -31,3 +31,8 @@ core/0.ccb08777.js (11.28 KB)
 
 未解决2次异步导入重复的问题(antd-table)
 
+### v0.03
+``` bash
+- 终于搞定了异步导入重复的问题，顺便带上了css。
+- devMode ? 'style-loader' : MiniCssExtractPlugin.loader -、-
+```

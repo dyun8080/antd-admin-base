@@ -14,8 +14,7 @@ const webpackConfig = {
 
 	entry: {
 		index: [
-			// 'babel-polyfill',
-			path.join(__dirname, './src/index.tsx')
+			path.join(__dirname, `./client/${NODE_ENV !== 'production' ? 'entry.dev' : 'entry'}.tsx`),
 		],
 	},
 
@@ -40,7 +39,7 @@ const webpackConfig = {
 		new webpack.ContextReplacementPlugin(/moment[\\\/]locale$/, /^\.\/(zh-cn|en-gb)$/),
 		/*eslint-enable */
 		new HtmlWebpackPlugin({
-			template: './src/index.html',
+			template: path.join(__dirname, `${NODE_ENV !== 'production' ? 'dist' : 'client'}/index.html`),
 			inject: true,
 		}),
 	],
@@ -131,6 +130,10 @@ if (NODE_ENV !== 'production') {
 		...webpackConfig.entry.index
 	]
 	webpackConfig.plugins.push(new webpack.HotModuleReplacementPlugin())
+	webpackConfig.plugins.push(new webpack.DllReferencePlugin({
+		context: __dirname,
+		manifest: path.join(__dirname, 'dist/manifest.json'),
+	}))
 }
 /**
 |--------------------------------------------------
@@ -142,11 +145,11 @@ else {
 	webpackConfig.plugins.push(new MiniCssExtractPlugin({
 		// Options similar to the same options in webpackOptions.output
 		// both options are optional
-		filename: 'styles/[name].[chunkhash:8].css',
+		filename: 'style.[chunkhash:8].css',
 		chunkFilename: 'styles/[id].chunk.[chunkhash:8].css'
 	}))
 	webpackConfig.optimization = {
-		// runtimeChunk 为true时，会把一个js文件变成2个，总体积变小一点点。但是好像~~好像没什么卵用
+		// runtimeChunk 为true时，会把一个js文件变成2个，总体积变小一点点。但是好像~~好像没什么卵用:还会把同步打包的模块变成异步模块
 		runtimeChunk: false,
 		splitChunks: {
 			chunks: 'all',
@@ -158,24 +161,29 @@ else {
 			cacheGroups: {
 				vendor: {
 					name: 'vendor',
-					filename: '[name].[chunkhash:8].js',
 					chunks: 'all',
-					// test: /react|react-dom|moment/,
 					test: /react-dom|axios/,
 					minChunks: 1,
+					enforce: true
+				},
+				common: {
+					name: 'common',
+					chunks: 'all',
+					test: /[\\/]node_modules[\\/]/,
+					minChunks: 5,
 					enforce: true
 				},
 			},
 		}
 	}
-	webpackConfig.output.filename = 'core/[name].[chunkhash:8].js'
+	webpackConfig.output.filename = '[name].[chunkhash:8].js'
 	webpackConfig.output.chunkFilename = 'core/[name].[chunkhash:8].js'
 	// webpackConfig.module.rules = [
 	// 	...webpackConfig.module.rules,
 	// ]
 	webpackConfig.module.rules.forEach(item => {
 		if ([/\.(less)$/.toString(), /\.(css)$/.toString(),].includes(item.test.toString())) {
-			item.use.splice(1, 0, MiniCssExtractPlugin.loader)
+			item.use.splice(0, 1, MiniCssExtractPlugin.loader)
 		}
 	})
 }

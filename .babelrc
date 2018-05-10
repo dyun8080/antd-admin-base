@@ -3,17 +3,6 @@
 		"env",
 		"stage-0"
 	],
-	"plugins": [
-		[
-			"import",
-			{
-				"libraryName": "antd",
-				// libraryDirectory不设置为es，webpack-bundle-analyzer在加载less文件的时候会无效
-				"libraryDirectory": "es",
-				"style": true
-			}
-		]
-	],
 	"env": {
 		// only enable it when process.env.NODE_ENV is 'development' or undefined
 		"development": {
@@ -21,6 +10,18 @@
 				"react-hmre"
 			]
 		},
-		"production": {}
+		"production": {
+			"plugins": [
+				[
+					"import",
+					{
+						"libraryName": "antd",
+						// libraryDirectory不设置为es，webpack-bundle-analyzer在加载less文件的时候会无效
+						"libraryDirectory": "es",
+						"style": true
+					}
+				]
+			]
+		}
 	}
 }

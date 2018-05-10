@@ -23,9 +23,9 @@ export interface RouteItemValues {
 	children?: Array<RouteItemValues>
 }
 
-const AsyncView1 = asyncComponent(() => import('../views/AsyncView1'))
-const AsyncView2 = asyncComponent(() => import('../views/AsyncView2'))
-const AsyncView3 = asyncComponent(() => import('../views/AsyncView3'))
+const AsyncView1 = asyncComponent(() => import('@/views/AsyncView1'))
+const AsyncView2 = asyncComponent(() => import('@/views/AsyncView2'))
+const AsyncView3 = asyncComponent(() => import('@/views/AsyncView3'))
 
 export class RouterStore extends BaseRouterStore {
 	static RouteList: Array<RouteItemValues> = [
