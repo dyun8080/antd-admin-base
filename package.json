@@ -71,6 +71,7 @@
     "axios": "^0.18.0",
     "babel-polyfill": "^6.26.0",
     "classnames": "^2.2.5",
+    "compression": "^1.7.2",
     "express": "^4.15.4",
     "lodash": "^4.17.10",
     "mobx": "^4.2.0",

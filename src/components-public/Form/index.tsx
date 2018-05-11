@@ -5,19 +5,19 @@ import { GetFieldDecoratorOptions } from 'antd/lib/form/Form'
 
 const FormItem = Form.Item
 
-interface FieldsItem {
+export interface FieldsItem {
 	label: string
 	key: string
 	rules?: any,
 	node?: React.ReactElement<any>
 }
 
-interface Props extends FormComponentProps {
+export interface FormWrapProps extends FormComponentProps {
 	formItemLayout?: any
 	fields: Array<FieldsItem>
 }
 
-class FormWrap extends Component<Props, any> {
+class FormWrap extends Component<FormWrapProps, any> {
 	static defaultProps = {
 		formItemLayout: {
 			labelCol: { span: 7 },
