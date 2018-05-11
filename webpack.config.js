@@ -6,7 +6,9 @@ import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer'
 import lessToJs from 'less-vars-to-js'
 import MiniCssExtractPlugin from 'mini-css-extract-plugin'
 
+// process.env.NODE_ENV is 'development' or 'production'
 const { NODE_ENV } = process.env
+
 const modifyVars = lessToJs(fs.readFileSync(path.join(__dirname, 'assets/styles/__theme.less'), 'utf8'))
 
 const webpackConfig = {
@@ -22,7 +24,7 @@ const webpackConfig = {
 		filename: 'entry.[name].js',
 		chunkFilename: '[name].js',
 		path: path.join(__dirname, 'dist'),
-		publicPath: './',
+		publicPath: '/',
 	},
 
 	resolve: {
@@ -111,7 +113,6 @@ const webpackConfig = {
 					}
 				]
 			},
-
 		]
 	},
 }

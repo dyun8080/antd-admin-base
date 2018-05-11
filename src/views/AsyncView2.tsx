@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { AsyncViewProps } from '@/stores/RouterStore'
-import { Button, Card, Tag, Modal } from 'antd'
+import { Button, Card, Modal } from 'antd'
 import modal, { WrappedComponentProps } from '@/hoc/modal'
 
 import CommonAsyncTable from '@/components-public/Table/CommonAsyncTable'
@@ -35,7 +35,6 @@ export default class AsyncView2 extends Component<AsyncViewProps, any> {
 				<HOCAddModal>
 					<Button>HOCAddModal</Button>
 				</HOCAddModal>
-				<Tag>时间</Tag>
 				<CommonAsyncTable
 					columns={columns}
 					pageSize={10}

@@ -1,13 +1,8 @@
-/**
-|--------------------------------------------------
-| 完善而健全的文档才是第一生产力 2018-5-11 12:30:48 fongwell_xiaoyun
-|--------------------------------------------------
-*/
 import React, { Component } from 'react'
 import { Modal } from 'antd'
 import { WrappedFormUtils } from 'antd/lib/form/Form'
 
-import CustomForm, { FormWrapProps, FieldsItem } from '.'
+import FormWrap, { FormWrapProps, FieldsItem } from './FormWrap'
 import modal, { WrappedComponentProps } from '@/hoc/modal'
 
 export interface ModalAsyncFormProps extends FormWrapProps, WrappedComponentProps {
@@ -22,8 +17,7 @@ class ModalContent extends Component<ModalAsyncFormProps, any> {
 	static defaultProps = {
 		title: '新增',
 		fields: [
-			{ label: '爱好', key: 'name' },
-			{ label: '姓名', key: 'name11' },
+			{ label: 'label', key: 'name' },
 		] as Array<FieldsItem>,
 	}
 
@@ -35,13 +29,14 @@ class ModalContent extends Component<ModalAsyncFormProps, any> {
 
 				this.props.asyncConfirm(async () => {
 					/** test ===> PASS  2018-5-11 11:34:24 */
-					const res = new Promise(resolve => {
+					const res = new Promise((resolve) => {
 						setTimeout(() => {
 							resolve()
 						}, 2000)
 					})
 					await res
 				}, () => {
+					// 添加成功后清空表单
 					this.form.resetFields()
 				})
 			}
@@ -57,7 +52,7 @@ class ModalContent extends Component<ModalAsyncFormProps, any> {
 				onOk={() => this.handleOk()}
 				confirmLoading={this.props.confirmLoading}
 			>
-				<CustomForm ref={(element: any) => this.form = element} fields={this.props.fields} />
+				<FormWrap ref={(element: any) => this.form = element} fields={this.props.fields} />
 			</Modal>
 		)
 	}

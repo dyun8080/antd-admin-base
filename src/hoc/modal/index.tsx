@@ -55,6 +55,7 @@ export default (WrappedComponent: React.ComponentType<WrappedComponentProps>): R
 			}, async () => {
 				try {
 					await asyncCb()
+					message.success('操作成功！')
 					this.handleCancel(successCb)
 				} catch (error) {
 					// this.handleCancel()
@@ -64,7 +65,6 @@ export default (WrappedComponent: React.ComponentType<WrappedComponentProps>): R
 
 			})
 		}
-
 
 		render() {
 			return (

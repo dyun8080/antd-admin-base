@@ -4,6 +4,7 @@ import cloneDeep from 'lodash/clonedeep'
 export { get, post } from './request'
 
 export function getAssetParams(values) {
+	// pretreatment values ==> asset query
 	const query = cloneDeep(values)
 
 	if ('size' in query && 'current' in query) {
