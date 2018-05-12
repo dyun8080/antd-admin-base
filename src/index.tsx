@@ -1,4 +1,4 @@
-import '@/utils'
+// import '@/utils'
 import 'babel-polyfill'
 import React from 'react'
 import ReactDOM from 'react-dom'
@@ -19,8 +19,9 @@ import '../assets/styles/custom.less'
 const RouterContainer = withRouter(props => <Layout {...props} />)
 
 const history = createHashHistory()
-
 const rootStore = createStores(history)
+
+
 
 ReactDOM.render(
 	<LocaleProvider locale={zhCN}>

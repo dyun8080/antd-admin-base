@@ -16,7 +16,6 @@ export default class extends Component<AsyncViewProps, any> {
 			{
 				label: '备注消息',
 				key: 'people',
-				rulesType: 'phone',
 				node: (
 					<Input.TextArea rows={4} />
 				),
