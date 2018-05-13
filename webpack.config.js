@@ -161,13 +161,14 @@ else {
 			name: true,
 			cacheGroups: {
 				// 打包第三方库
-				vendor: {
-					name: 'vendor',
-					chunks: 'all',
-					test: /react-dom|axios/,
-					minChunks: 1,
-					enforce: true
-				},
+				// vendor: {
+				// 	name: 'vendor',
+				// 	chunks: 'all',
+				// 	// test: /react-dom|axios/,
+				// 	test: /react-dom/,
+				// 	minChunks: 1,
+				// 	enforce: true
+				// },
 				// 抽离公共的异步代码
 				common: {
 					name: 'common',

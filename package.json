@@ -13,7 +13,8 @@
     "dll": "npm run clean && node -r babel-register ./node_modules/webpack/bin/webpack --progress --profile --colors --config webpack.dll.js",
     "start": "cross-env NODE_ENV=development node -r babel-register server/server.dev.js",
     "build-main": "cross-env NODE_ENV=production node -r babel-register ./node_modules/webpack/bin/webpack --progress --profile --colors",
-    "build": "npm run clean && npm run build-main"
+		"build": "npm run clean && npm run build-main",
+		"server": "cross-env NODE_ENV=production node ./server/index.js"
   },
   "author": "xiedengyun",
   "license": "ISC",

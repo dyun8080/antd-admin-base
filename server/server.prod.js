@@ -18,16 +18,22 @@ app.use(compression())
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }))
 
-app.use(express.static(path.join(__dirname, '../dist')))
+app.use(express.static(path.join(__dirname, '../dist'), {
+	// lastModified: true
+	// maxAge: 1000 * 60 * 60
+}))
 
 // oauthRoute(app)
+
+let data = [
+	{ name: 'damao', skill: ' 开撸11了' }
+]
+
 
 app.get('/getInfo', (req, res) => {
 	res.send({
 		code: 0,
-		data: [
-			{ name: 'damao', skill: ' 开撸了' }
-		]
+		data
 	})
 })
 

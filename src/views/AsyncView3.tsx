@@ -25,7 +25,6 @@ export default class extends Component<AsyncViewProps, any> {
 		return (
 			<Card bodyStyle={{ padding: 10, minHeight: 500 }} bordered={false}>
 				test css-modules: <span className={style.red}>{this.props.title}</span>
-
 				<ModalAsyncForm fields={fields} apiString="damao">
 					<Button>addModal</Button>
 				</ModalAsyncForm>
