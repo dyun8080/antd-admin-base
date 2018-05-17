@@ -5,7 +5,6 @@ import { AsyncViewProps } from '@/stores/RouterStore'
 import CommonAsyncTable from '@/components-public/Table/CommonAsyncTable'
 import ModalAsyncForm from '@/components-public/Form/ModalAsyncForm'
 
-
 export default class AsyncView1 extends Component<AsyncViewProps, any> {
 	render() {
 		const fields = [

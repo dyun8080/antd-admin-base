@@ -17,7 +17,7 @@ const webpackConfig = {
 	entry: {
 		index: [
 			path.join(__dirname, `./client/${NODE_ENV !== 'production' ? 'entry.dev' : 'entry'}.tsx`),
-		],
+		]
 	},
 
 	output: {
@@ -131,6 +131,7 @@ if (NODE_ENV !== 'production') {
 		...webpackConfig.entry.index
 	]
 	webpackConfig.plugins.push(new webpack.HotModuleReplacementPlugin())
+	// quick encode
 	webpackConfig.plugins.push(new webpack.DllReferencePlugin({
 		context: __dirname,
 		manifest: path.join(__dirname, 'dist/manifest.json'),
