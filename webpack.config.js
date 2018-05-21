@@ -6,9 +6,7 @@ import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer'
 import lessToJs from 'less-vars-to-js'
 import MiniCssExtractPlugin from 'mini-css-extract-plugin'
 
-// process.env.NODE_ENV is 'development' or 'production'
 const { NODE_ENV } = process.env
-
 const modifyVars = lessToJs(fs.readFileSync(path.join(__dirname, 'assets/styles/__theme.less'), 'utf8'))
 
 const webpackConfig = {
@@ -151,7 +149,7 @@ else {
 		chunkFilename: 'styles/[id].chunk.[chunkhash:8].css'
 	}))
 	webpackConfig.optimization = {
-		// runtimeChunk 为true时，会把一个js文件变成2个，总体积变小一点点。但是好像~~好像没什么卵用:还会把同步打包的模块变成异步模块
+		// runtimeChunk 为true时，会把一个js文件变成2个，总体积变小一点点
 		runtimeChunk: false,
 		splitChunks: {
 			chunks: 'all',
@@ -175,6 +173,7 @@ else {
 					name: 'common',
 					chunks: 'all',
 					test: /[\\/]node_modules[\\/]/,
+					// minChunks通过异步加载的打包次数进行优
 					minChunks: 2,
 					enforce: true
 				},

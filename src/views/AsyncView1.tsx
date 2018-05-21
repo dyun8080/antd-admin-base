@@ -31,7 +31,7 @@ export default class AsyncView1 extends Component<AsyncViewProps, any> {
 				</ModalAsyncForm>
 				<CommonAsyncTable
 					columns={columns}
-					// pageSize={10}
+					pageSize={15}
 					apiString="https://sscsapi.fongwell.com/api/skus"
 				/>
 			</Content>
