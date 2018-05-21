@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import { AsyncViewProps } from '@/stores/RouterStore'
-import { Button, Card, Modal, Tag } from 'antd'
+import { Button, Modal } from 'antd'
 import modal, { WrappedComponentProps } from '@/hoc/modal'
+import { Content } from '@/components/Layout'
 
 import CommonAsyncTable from '@/components-public/Table/CommonAsyncTable'
 
@@ -31,17 +32,16 @@ export default class AsyncView2 extends Component<AsyncViewProps, any> {
 		]
 
 		return (
-			<Card bodyStyle={{ padding: 10 }} bordered={false}>
+			<Content>
 				<HOCAddModal>
 					<Button>HOCAddModal</Button>
 				</HOCAddModal>
-				<Tag>按钮</Tag>
 				<CommonAsyncTable
 					columns={columns}
 					pageSize={10}
 					apiString="https://sscsapi.fongwell.com/api/stores"
 				/>
-			</Card>
+			</Content>
 		)
 	}
 }

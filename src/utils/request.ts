@@ -1,10 +1,6 @@
 import axios from 'axios'
 
 const codeMessage = {
-	// 200: '服务器成功返回请求的数据',
-	// 201: '新建或修改数据成功。',
-	// 202: '一个请求已经进入后台排队（异步任务）',
-	// 204: '删除数据成功。',
 	400: '错误请求,请求参数有误!',
 	401: '用户没有权限（令牌、用户名、密码错误）。',
 	403: '用户得到授权，但是访问是被禁止的。',
@@ -30,7 +26,7 @@ axios.defaults.baseURL = _API_BASE_
 axios.defaults.timeout = 1000 * 60 * 2
 
 axios.defaults.params = {
-	access_token: 'eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1MjY1NzEwNzMsInVzZXJfbmFtZSI6ImFkbWluIiwic2NvcGUiOlsiZndhcGlfYmFzZSJdLCJhdXRob3JpdGllcyI6WyJST0xFX0FETUlOX1VTRVIiXSwianRpIjoiNWRhYjdiZGEtZDQ1ZC00OWFhLTkyNjktYmI4ZDEwMzg5NTZkIiwiY2xpZW50X2lkIjoiVHh4R2pZWkNBVWJRZ3hpcEt6V1p0anZZdWdHR29RZFZJWVNVU3ZBaHFLV1BsV055cWRaU09PSU1WY1VKUUxGdyJ9.Q4q1pbBg1jAF3r1bycn7SepJFrR9ljPVwDvaq2hPN04',
+	access_token: 'eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1MjY5MTczMTEsInVzZXJfbmFtZSI6ImFkbWluIiwic2NvcGUiOlsiZndhcGlfYmFzZSJdLCJhdXRob3JpdGllcyI6WyJST0xFX0FETUlOX1VTRVIiXSwianRpIjoiNTE5M2ViNmMtODNkZi00NGUyLTg5NWYtNWI0MTZmZmNiYmMyIiwiY2xpZW50X2lkIjoiVHh4R2pZWkNBVWJRZ3hpcEt6V1p0anZZdWdHR29RZFZJWVNVU3ZBaHFLV1BsV055cWRaU09PSU1WY1VKUUxGdyJ9.4NTA3FbOLxmOggGpAmD003igJ82JVARhbbKSSXn0u9w',
 }
 
 axios.interceptors.response.use(
