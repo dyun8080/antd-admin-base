@@ -1,9 +1,8 @@
 // @import "~antd/es/style/index.less";
-
 .layout(100);
 .font-size(50);
-
 .layout(@n, @i: 5) when (@i =< @n) {
+  // mt5、mt10 ===> mt100 间隔为5
   .mt@{i} {
     margin-top: (@i * 1px);
   }
@@ -34,6 +33,7 @@
   .layout(@n, (@i + 5));
 }
 
+// fs12、fs14 ===> fs50 间隔为2
 .font-size(@n, @i: 12) when (@i =< @n) {
   .fs@{i} {
     font-size: (@i * 1px);

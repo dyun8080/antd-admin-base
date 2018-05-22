@@ -1,9 +1,10 @@
 import React, { Component } from 'react'
-import { Button, Card } from 'antd'
+import { Button } from 'antd'
 
 import { AsyncViewProps } from '@/stores/RouterStore'
 import CommonAsyncTable from '@/components-public/Table/CommonAsyncTable'
 import ModalAsyncForm from '@/components-public/Form/ModalAsyncForm'
+import { Content } from '@/components/Layout'
 
 export default class AsyncView1 extends Component<AsyncViewProps, any> {
 	render() {
@@ -24,16 +25,16 @@ export default class AsyncView1 extends Component<AsyncViewProps, any> {
 		]
 
 		return (
-			<Card bodyStyle={{ padding: 10 }} bordered={false}>
+			<Content>
 				<ModalAsyncForm fields={fields}>
 					<Button icon="plus" type="primary">新建商品</Button>
 				</ModalAsyncForm>
 				<CommonAsyncTable
 					columns={columns}
-					pageSize={10}
+					pageSize={15}
 					apiString="https://sscsapi.fongwell.com/api/skus"
 				/>
-			</Card>
+			</Content>
 		)
 	}
 }

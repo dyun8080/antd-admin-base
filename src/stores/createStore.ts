@@ -6,8 +6,10 @@ import { STORE_ROUTER, USER_ROUTER } from '../constants'
 
 export function createStores(history: History) {
 	const routerStore = new RouterStore(history)
+	const userStore = new UserStore()
+
 	return {
 		[STORE_ROUTER]: routerStore,
-		[USER_ROUTER]: UserStore,
+		[USER_ROUTER]: userStore,
 	}
 }

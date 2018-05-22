@@ -30,7 +30,7 @@ const AsyncView3 = asyncComponent(() => import('@/views/AsyncView3'))
 export class RouterStore extends BaseRouterStore {
 	static RouteList: Array<RouteItemValues> = [
 		{
-			title: '商品列表',
+			title: 'AsyncView1',
 			iconType: 'login',
 			url: '/table',
 			Component: AsyncView1,
