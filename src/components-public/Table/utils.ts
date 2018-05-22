@@ -1,6 +1,6 @@
 import moment from 'moment'
 import numeral from 'numeral'
-import cloneDeep from 'lodash/clonedeep'
+import cloneDeep from 'lodash/cloneDeep'
 
 // const TwoRow = ({ text, secondary }) => (
 // 	<React.Fragment>

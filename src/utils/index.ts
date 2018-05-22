@@ -1,5 +1,5 @@
 import moment from 'moment'
-import cloneDeep from 'lodash/clonedeep'
+import cloneDeep from 'lodash/cloneDeep'
 
 export { get, post } from './request'
 

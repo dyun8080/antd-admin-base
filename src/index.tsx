@@ -11,7 +11,6 @@ import { createHashHistory } from 'history'
 import Layout from './Layout'
 import { createStores } from './stores'
 
-import 'ant-design-pro/dist/ant-design-pro.less'
 import '../assets/styles/layout.less'
 import '../assets/styles/flex.less'
 import '../assets/styles/classes.less'
